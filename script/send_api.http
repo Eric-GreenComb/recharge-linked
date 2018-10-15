@@ -1,0 +1,28 @@
+
+### health
+GET http://localhost:9000/health
+Content-Type: application/json
+
+{
+}
+
+### alter
+POST http://localhost:9000/dgraph/alter
+Content-Type: application/json
+
+{
+}
+
+### mutate
+POST http://localhost:9000/dgraph/mutate
+Content-Type: application/json
+
+{
+}
+
+### query
+GET http://localhost:9000/dgraph/query
+Content-Type: application/json
+
+{
+}
