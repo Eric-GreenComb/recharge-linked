@@ -4,6 +4,7 @@ package bean
 type ServerConfig struct {
 	Port []string
 	Mode string
+	IPs  []string
 }
 
 // DgraphConfig DgraphConfig

@@ -1,7 +1,11 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/gin-gonic/gin"
+
+	"github.com/Eric-GreenComb/recharge-linked/config"
 )
 
 // Cors Cors
@@ -11,8 +15,16 @@ func Cors() gin.HandlerFunc {
 
 		if c.Request.Method == "OPTIONS" {
 			c.AbortWithStatus(200)
-		} else {
-			c.Next()
+			return
 		}
+
+		_clientIP := c.ClientIP()
+		if !config.HasInIPs(_clientIP) {
+			fmt.Println("!!!!!!!!!! illegal access : ", _clientIP)
+			c.AbortWithStatus(200)
+			return
+		}
+
+		c.Next()
 	}
 }
