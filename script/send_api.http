@@ -1,6 +1,6 @@
 
 ### health
-GET http://123.206.29.15:9000/health
+GET http://localhost:9000/health
 Content-Type: application/json
 
 {

@@ -123,8 +123,9 @@ func Query(c *gin.Context) {
 
 	// Assigned uids for nodes which were created would be returned in the resp.AssignedUids map.
 	// variables := map[string]string{"$id": assigned.Uids["blank-0"]}
+
 	const q = `{
-		person(func: has(name)) {
+		persons(func: has(age)) {
 		  uid
 		  name
 		  dob
@@ -148,20 +149,20 @@ func Query(c *gin.Context) {
 		log.Fatal(err)
 	}
 
-	// type Root struct {
-	// 	Me []bean.Person `json:"me"`
-	// }
+	type Root struct {
+		Persons []bean.Person `json:"persons"`
+	}
 
-	// var r Root
-	// err = json.Unmarshal(resp.Json, &r)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
+	var r Root
+	err = json.Unmarshal(resp.Json, &r)
+	if err != nil {
+		log.Fatal(err)
+	}
 	// fmt.Printf("Me: %+v\n", r.Me)
 	// R.Me would be same as the person that we set above.
 
 	// fmt.Println(string(resp.Json))
 	// Output: {"me":[{"name":"Alice","dob":"1980-01-01T23:00:00Z","age":26,"loc":{"type":"Point","coordinates":[1.1,2]},"raw_bytes":"cmF3X2J5dGVz","married":true,"friend":[{"name":"Bob","age":24}],"school":[{"name":"Crown Public School"}]}]}
 
-	c.String(http.StatusOK, string(resp.Json))
+	c.JSON(http.StatusOK, r.Persons)
 }

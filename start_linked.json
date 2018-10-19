@@ -1,0 +1,15 @@
+{
+    "apps": [{
+        "name": "recharge_linked",
+        "cwd": "./",
+        "script": "start_linked.sh",
+        "exec_interpreter": "bash",
+        "min_uptime": "60s",
+        "max_restarts": 30,
+        "exec_mode": "fork",
+        "error_file": "./tmp/recharge_linked-err.log",
+        "out_file": "./tmp/recharge_linked-out.log",
+        "pid_file": "./tmp/recharge_linked.pid",
+        "watch": false
+    }]
+}
